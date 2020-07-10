@@ -1,24 +1,26 @@
-#ifndef POLYNOM_H_INCLUDED
+п»ї#ifndef POLYNOM_H_INCLUDED
 #define POLYNOM_H_INCLUDED
 #include <iostream>
 #include <vector>
 #include <iomanip>
+#include <locale.h>
 using namespace std;
+setlocale(LC_ALL, "rus");
 
 class Polynom {
 private:
 	int degree;
 	vector<double> coeff;
 public:
-	//конструкторы
+	//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
 	Polynom();
 	Polynom(int dg);
 	Polynom(int dg, const vector<double> & cf);
-	//конструктор копирования
+	//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
 	Polynom(const Polynom& p);
-	//получение степени полинома
+	//РїРѕР»СѓС‡РµРЅРёРµ СЃС‚РµРїРµРЅРё РїРѕР»РёРЅРѕРјР°
 	int getDegree();
-	//получение коэффициента 
+	//РїРѕР»СѓС‡РµРЅРёРµ РєРѕСЌС„С„РёС†РёРµРЅС‚Р° 
 	double getCoeff(int dg);
 	//double koren(const Polynom&, double start, double end);
 	void reduce(void);
@@ -30,11 +32,11 @@ public:
 	Polynom& operator / (const Polynom&) const;
 	Polynom& increase(int) const;
 	
-	//вычисление значения многочлена для заданного аргумена
+	//РІС‹С‡РёСЃР»РµРЅРёРµ Р·РЅР°С‡РµРЅРёСЏ РјРЅРѕРіРѕС‡Р»РµРЅР° РґР»СЏ Р·Р°РґР°РЅРЅРѕРіРѕ Р°СЂРіСѓРјРµРЅР°
 	double operator () (int);
-	//взятие производной с получением нового объекта-многочлена
+	//РІР·СЏС‚РёРµ РїСЂРѕРёР·РІРѕРґРЅРѕР№ СЃ РїРѕР»СѓС‡РµРЅРёРµРј РЅРѕРІРѕРіРѕ РѕР±СЉРµРєС‚Р°-РјРЅРѕРіРѕС‡Р»РµРЅР°
 	Polynom derivative();
-	//взятие интеграла
+	//РІР·СЏС‚РёРµ РёРЅС‚РµРіСЂР°Р»Р°
 	Polynom integral();
 
 

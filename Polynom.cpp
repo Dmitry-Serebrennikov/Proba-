@@ -1,5 +1,6 @@
-#include <iostream>
+﻿#include <iostream>
 #include <string>
+#include <math.h>
 #include "Polynom.h"
 
 using namespace std;
@@ -190,4 +191,25 @@ ostream& operator << (ostream& out, const Polynom& p) {
 	out << endl;
 	return out;
 }
+
+//реализация метода Ньютона
+double Polynom::koren(Polynom p, double x0) {
+	Polynom pd = p.derivative();
+	double x1 = x0 - p(x0)/pd(x0);
+	double eps = 0.00001;
+	while (fabs(x1 - x0) > eps) {
+		x0 = x1;
+		x1 = x0 - p(x0) / pd(x0);
+	}
+	return x1;
+
+}
+
+bool Polynom::solution(double begin, double end) {
+	double x1 = koren(*this, begin);
+	double x2 = koren(*this, end);
+
+	return (x1 >= begin && x1 <= end) || (x2 >= begin && x2 <= end);
+}
+
 
